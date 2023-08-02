@@ -1,0 +1,14 @@
+image: node:18
+
+definitions:
+  steps:
+    - step: &semantic-versioning
+        script:
+          - npx -p conventional-changelog-conventionalcommits -p @semantic-release/changelog -p @semantic-release/git -p semantic-release semantic-release
+
+pipelines:
+  branches:
+    master:
+      - step:
+          name: Semantic release
+          <<: *semantic-versioning

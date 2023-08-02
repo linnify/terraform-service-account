@@ -1,0 +1,36 @@
+fail_fast: true
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0
+    hooks:
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: detect-private-key
+      - id: check-symlinks
+      - id: check-vcs-permalinks
+      - id: trailing-whitespace
+        args:
+          - --markdown-linebreak-ext=md
+      - id: mixed-line-ending
+        args:
+          - --fix=lf
+      - id: check-case-conflict
+      - id: fix-byte-order-marker
+      - id: destroyed-symlinks
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.74.1
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_validate
+      - id: terraform_docs
+        args:
+          - --hook-config=--create-file-if-not-exist=true
+  - repo: https://github.com/aquasecurity/tfsec
+    rev: v1.27.1
+    hooks:
+      - id: tfsec
+        args:
+          - '--config-file=.tfsec.yaml'
+          - '--exclude-downloaded-modules'
+          - '--no-module-downloads'

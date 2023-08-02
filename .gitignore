@@ -48,3 +48,16 @@ Thumbs.db
 *.mov
 *.wmv
 
+#Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+*terraform/modules/*/.terraform.lock.hcl
+**/*.tfvars
+
